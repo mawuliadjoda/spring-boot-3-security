@@ -1,4 +1,4 @@
-package com.adjoda.jwt;
+package com.adjoda.config.jwt;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
