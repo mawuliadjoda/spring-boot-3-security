@@ -1,4 +1,4 @@
-package com.adjoda.auth;
+package com.adjoda.auth.dto;
 
 import lombok.Data;
 
