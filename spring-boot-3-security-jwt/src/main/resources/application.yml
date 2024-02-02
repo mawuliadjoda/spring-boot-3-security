@@ -1,0 +1,16 @@
+
+spring:
+  profiles:
+    active: prod
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    url:
+    username:
+    password:
