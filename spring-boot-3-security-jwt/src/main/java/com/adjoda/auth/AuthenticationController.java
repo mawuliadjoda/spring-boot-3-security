@@ -1,6 +1,7 @@
 package com.adjoda.auth;
 
 import com.adjoda.auth.dto.JwtAuthResponse;
+import com.adjoda.auth.dto.RefreshTokenRequest;
 import com.adjoda.auth.dto.SignInRequest;
 import com.adjoda.auth.dto.SignUpRequest;
 import com.adjoda.user.UserEntity;
@@ -25,5 +26,10 @@ public class AuthenticationController {
     @PostMapping("/sign-in")
     public ResponseEntity<JwtAuthResponse> signIn(@RequestBody SignInRequest signInRequest) {
         return ResponseEntity.ok(authenticationService.signIn(signInRequest));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
 }

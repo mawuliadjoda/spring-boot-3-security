@@ -1,6 +1,7 @@
 package com.adjoda.auth;
 
 import com.adjoda.auth.dto.JwtAuthResponse;
+import com.adjoda.auth.dto.RefreshTokenRequest;
 import com.adjoda.auth.dto.SignInRequest;
 import com.adjoda.auth.dto.SignUpRequest;
 import com.adjoda.auth.exception.UserNotFoundException;
@@ -57,5 +58,24 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         jwtAuthResponse.setJwtRefreshToken(refreshTokenJwtToken);
 
         return jwtAuthResponse;
+    }
+
+    public JwtAuthResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+        String username = jwtService.extractUserName(refreshTokenRequest.getToken());
+        UserEntity userEntity = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException());
+
+        if(jwtService.isTokenValid(refreshTokenRequest.getToken(), userEntity)) {
+            var jwtToken = jwtService.generateToken(userEntity);
+
+            JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+
+            jwtAuthResponse.setJwtToken(jwtToken);
+            jwtAuthResponse.setJwtRefreshToken(refreshTokenRequest.getToken());
+
+            return jwtAuthResponse;
+        }
+        return null;
+
     }
 }
