@@ -1,7 +1,5 @@
 
 spring:
-  profiles:
-    active: aws
   sql:
     init:
       mode: always
@@ -11,6 +9,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
-    url:
-    username:
-    password:
+    url: jdbc:postgresql://adjoda-dev-db.c32oag8wocyb.eu-west-3.rds.amazonaws.com:5432/connect228
+    username: lefort
+    password: lefort123
