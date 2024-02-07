@@ -49,12 +49,12 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: spring-boot-3-security-jwt-task-definition.json
-          container-name: spring-boot-3-security
+          container-name: spring-boot-3-security-jwt
           image: ${{ steps.build-image.outputs.image }}
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: spring-boot-3-security-service
+          service: spring-boot-3-security-jwt-service
           cluster: adjodadev-aws-cluster
           wait-for-service-stability: true
