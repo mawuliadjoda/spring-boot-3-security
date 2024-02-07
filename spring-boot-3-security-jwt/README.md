@@ -32,3 +32,7 @@
 
    docker push adjodamawuli/spring-boot-3-security-jwt:1.0.1
 
+7. deploy to aws ecs using github action
+   https://github.com/aws-actions/configure-aws-credentials
+
+
